@@ -1,7 +1,7 @@
 .PHONY: clean build publish test develop
 
 VERSION ?= $(shell git describe --tags | sed 's/-/\+/' | sed 's/-/\./g')
-REPO ?= https://pypi.python.org/pypi
+REPO ?= https://upload.pypi.org/legacy/
 REPO_USER ?= __token__
 REPO_PASS ?= unset
 
