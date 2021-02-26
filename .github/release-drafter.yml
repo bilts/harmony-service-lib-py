@@ -9,7 +9,9 @@ version-resolver:
     labels:
       - 'patch'
   default: patch
+name-template: 'v$RESOLVED_VERSION'
+tag-template: 'v$RESOLVED_VERSION'
 template: |
-  ## Changes
+  ## Updates
 
   $CHANGES
