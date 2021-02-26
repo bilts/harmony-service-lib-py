@@ -12,6 +12,4 @@ version-resolver:
 name-template: 'v$RESOLVED_VERSION'
 tag-template: 'v$RESOLVED_VERSION'
 template: |
-  ## Updates
-
   $CHANGES
