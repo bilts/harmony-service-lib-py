@@ -2,11 +2,13 @@
 
 VERSION ?= $(shell git describe --tags | sed 's/-/\+/' | sed 's/-/\./g')
 REPO ?= https://pypi.python.org/pypi
-REPO_USER ?= unset
+REPO_USER ?= __token__
 REPO_PASS ?= unset
 
-build: clean
+version:
 	sed -i.bak "s/__version__ .*/__version__ = \"$(VERSION)\"/" harmony/__init__.py && rm harmony/__init__.py.bak
+
+build: clean version
 	python -m pip install --upgrade --quiet setuptools wheel twine
 	python setup.py --quiet sdist bdist_wheel
 

@@ -1,0 +1,21 @@
+name: Publish Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    # github.sha, github.ref : https://docs.github.com/en/actions/reference/events-that-trigger-workflows#release
+    #
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: '0'
+    - shell: bash
+      env:
+        REPO_PASS: ${{ secrets.PYPI_TOKEN }}
+      run: |
+        VERSION=$(echo ${{github.event.release.tag_name}} | cut -c2-) make build
+        make publish
